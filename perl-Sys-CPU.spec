@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.51
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Getting CPU information
 
 Group:          Development/Libraries
@@ -61,6 +61,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Sun Jun 27 2010 Ralf Corsépius <corsepiu@fedoraproject.org> 0.51-3
+- Rebuild for perl-5.12.1.
+
 * Mon May 03 2010 Shakthi Kannan <shakthimaan [AT] gmail dot com> 0.51-2
 - Updated license to (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 
