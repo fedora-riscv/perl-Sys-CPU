@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.51
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Getting CPU information
 
 Group:          Development/Libraries
@@ -61,6 +61,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.51-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Wed Dec 22 2010 Marcela Maslanova <mmaslano@redhat.com> - 0.51-4
 - 661697 rebuild for fixing problems with vendorach/lib
 
