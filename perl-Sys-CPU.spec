@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.51
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Getting CPU information
 
 Group:          Development/Libraries
@@ -61,6 +61,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Fri Jun 17 2011 Marcela Mašláňová <mmaslano@redhat.com> - 0.51-6
+- Perl mass rebuild
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.51-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
