@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.51
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Getting CPU information
 
 Group:          Development/Libraries
@@ -56,11 +56,15 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 %files
 %defattr(-,root,root,-)
 %doc Changes README
-%{perl_vendorarch}/*
+%{perl_vendorarch}/auto/*
+%{perl_vendorarch}/Sys/*
 %{_mandir}/man3/*.3*
 
 
 %changelog
+* Tue Oct 05 2011 Shakthi Kannan <shakthimaan@fedoraproject.org> - 0.51-7
+- Used perl_vendorarch/auto, perl_vendorarch/Sys in files section.
+
 * Fri Jun 17 2011 Marcela Mašláňová <mmaslano@redhat.com> - 0.51-6
 - Perl mass rebuild
 
