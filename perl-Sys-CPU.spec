@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
-Version:        0.51
-Release:        10%{?dist}
+Version:        0.52
+Release:        1%{?dist}
 Summary:        Getting CPU information
 
 Group:          Development/Libraries
@@ -8,15 +8,11 @@ License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 URL:            http://search.cpan.org/~mkoderer/Sys-CPU/CPU.pm
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-Requires:       perl(IO::Handle)
-
 BuildRequires:  perl(ExtUtils::MakeMaker)
-
-# For test suite
-BuildRequires:  perl(Test::Harness)
-BuildRequires:  perl(Test::More)
-BuildRequires:  perl(IO::Handle)
+# Run-time:
+BuildRequires:  perl(DynaLoader)
+BuildRequires:  perl(Exporter)
+Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %{?perl_default_filter}
 
@@ -62,6 +58,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Fri Nov 02 2012 Petr Pisar <ppisar@redhat.com> - 0.52-1
+- 0.52 bump
+
 * Fri Jul 20 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.51-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
