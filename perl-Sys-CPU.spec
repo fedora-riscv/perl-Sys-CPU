@@ -4,6 +4,9 @@ Release:        1%{?dist}
 Summary:        Getting CPU information
 
 Group:          Development/Libraries
+# Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
+# The rest of the code is under the standard Perl license (GPL+ or Artistic).
+# See <https://bugzilla.redhat.com/show_bug.cgi?id=585336>.
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
