@@ -5,7 +5,7 @@ Summary:        Getting CPU information
 
 Group:          Development/Libraries
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
-URL:            http://search.cpan.org/~mkoderer/Sys-CPU/CPU.pm
+URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  perl(ExtUtils::MakeMaker)
