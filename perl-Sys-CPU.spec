@@ -9,6 +9,7 @@ Group:          Development/Libraries
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
+BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(DynaLoader)
 BuildRequires:  perl(Exporter)
