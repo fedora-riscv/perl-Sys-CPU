@@ -2,7 +2,6 @@ Name:           perl-Sys-CPU
 Version:        0.52
 Release:        1%{?dist}
 Summary:        Getting CPU information
-
 Group:          Development/Libraries
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
 # The rest of the code is under the standard Perl license (GPL+ or Artistic).
@@ -10,8 +9,6 @@ Group:          Development/Libraries
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(DynaLoader)
 BuildRequires:  perl(Exporter)
@@ -25,35 +22,22 @@ Currently only number of CPU's supported.
 
 %prep
 %setup -q -n Sys-CPU-%{version}
-
-
-%{__sed} -i 's/\r//' README
-%{__sed} -i 's/\r//' Changes
+sed -i 's/\r//' Changes README
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %check
-%{__make} test TEST_VERBOSE=1
+make test TEST_VERBOSE=1
 
 %install
-%{__rm} -rf %{buildroot}
-%{__make} pure_install DESTDIR=%{buildroot}
+make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
-
-
 find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
-
-
 %{_fixperms} %{buildroot}/*
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
 %doc Changes README
 %{perl_vendorarch}/auto/*
 %{perl_vendorarch}/Sys/*
