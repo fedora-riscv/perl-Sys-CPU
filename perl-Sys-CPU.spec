@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.52
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Getting CPU information
 Group:          Development/Libraries
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -9,6 +9,8 @@ Group:          Development/Libraries
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
+# Support for s390, CPAN RT #80633
+Patch0:         Sys-CPU-0.52-Add-support-for-Linux-on-s390.patch
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(DynaLoader)
@@ -23,6 +25,7 @@ Currently only number of CPU's supported.
 
 %prep
 %setup -q -n Sys-CPU-%{version}
+%patch0 -p1
 sed -i 's/\r//' Changes README
 
 %build
@@ -46,6 +49,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Mon Nov 05 2012 Petr Pisar <ppisar@redhat.com> - 0.52-2
+- Add support for s390 (CPAN RT #80633)
+
 * Fri Nov 02 2012 Petr Pisar <ppisar@redhat.com> - 0.52-1
 - 0.52 bump
 
