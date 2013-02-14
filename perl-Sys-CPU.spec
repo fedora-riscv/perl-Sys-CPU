@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.54
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Getting CPU information
 Group:          Development/Libraries
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -46,6 +46,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.54-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Tue Nov 13 2012 Petr Pisar <ppisar@redhat.com> - 0.54-1
 - 0.54 bump
 
