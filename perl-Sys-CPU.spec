@@ -1,22 +1,20 @@
 Name:           perl-Sys-CPU
-Version:        0.51
-Release:        10%{?dist}
+Version:        0.54
+Release:        3%{?dist}
 Summary:        Getting CPU information
-
 Group:          Development/Libraries
+# Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
+# The rest of the code is under the standard Perl license (GPL+ or Artistic).
+# See <https://bugzilla.redhat.com/show_bug.cgi?id=585336>.
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
-URL:            http://search.cpan.org/~mkoderer/Sys-CPU/CPU.pm
-Source0:        http://search.cpan.org/CPAN/authors/id/M/MK/MKODERER/Sys-CPU-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-Requires:       perl(IO::Handle)
-
+URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
+Source0:        http://search.cpan.org/CPAN/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{version}.tar.gz
+Patch0:		Sys-CPU-0.54-disable-cpu-type.patch
 BuildRequires:  perl(ExtUtils::MakeMaker)
-
-# For test suite
-BuildRequires:  perl(Test::Harness)
-BuildRequires:  perl(Test::More)
-BuildRequires:  perl(IO::Handle)
+# Run-time:
+BuildRequires:  perl(DynaLoader)
+BuildRequires:  perl(Exporter)
+Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %{?perl_default_filter}
 
@@ -26,35 +24,23 @@ Currently only number of CPU's supported.
 
 %prep
 %setup -q -n Sys-CPU-%{version}
-
-
-%{__sed} -i 's/\r//' README
-%{__sed} -i 's/\r//' Changes
+%patch0 -p1
+sed -i 's/\r//' Changes README
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %check
-%{__make} test TEST_VERBOSE=1
+make test TEST_VERBOSE=1
 
 %install
-%{__rm} -rf %{buildroot}
-%{__make} pure_install DESTDIR=%{buildroot}
+make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
-
-
 find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
-
-
 %{_fixperms} %{buildroot}/*
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
 %doc Changes README
 %{perl_vendorarch}/auto/*
 %{perl_vendorarch}/Sys/*
@@ -62,6 +48,21 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Fri Apr 19 2013 Shakthi Kannan <shakthimaan@fedoraproject.org> - 0.54-3
+- Disable cpu_type test
+
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.54-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
+* Tue Nov 13 2012 Petr Pisar <ppisar@redhat.com> - 0.54-1
+- 0.54 bump
+
+* Mon Nov 05 2012 Petr Pisar <ppisar@redhat.com> - 0.52-2
+- Add support for s390 (CPAN RT #80633)
+
+* Fri Nov 02 2012 Petr Pisar <ppisar@redhat.com> - 0.52-1
+- 0.52 bump
+
 * Fri Jul 20 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.51-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
