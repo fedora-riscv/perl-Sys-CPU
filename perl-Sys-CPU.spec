@@ -1,13 +1,13 @@
 Name:           perl-Sys-CPU
-Version:        0.54
-Release:        5%{?dist}
+Version:        0.61
+Release:        1%{?dist}
 Summary:        Getting CPU information
-Group:          Development/Libraries
+
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
 # The rest of the code is under the standard Perl license (GPL+ or Artistic).
 # See <https://bugzilla.redhat.com/show_bug.cgi?id=585336>.
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
-URL:            http://search.cpan.org/~mkoderer/Sys-CPU/
+URL:            http://search.cpan.org/~mzsanford/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{version}.tar.gz
 Patch0:		Sys-CPU-0.54-disable-cpu-type.patch
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -48,6 +48,12 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Sun Feb 23 2014 Emmanuel Seyman <emmanuel@seyman.fr> - 0.61-1
+- Update to 0.61
+- Drop unneeded macros
+- Fix incorrect dates in changelog
+- Disable test 3 (which fails on arm)
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.54-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
@@ -78,7 +84,7 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.51-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
-* Tue Oct 05 2011 Shakthi Kannan <shakthimaan@fedoraproject.org> - 0.51-7
+* Wed Oct 05 2011 Shakthi Kannan <shakthimaan@fedoraproject.org> - 0.51-7
 - Used perl_vendorarch/auto, perl_vendorarch/Sys in files section.
 
 * Fri Jun 17 2011 Marcela Mašláňová <mmaslano@redhat.com> - 0.51-6
