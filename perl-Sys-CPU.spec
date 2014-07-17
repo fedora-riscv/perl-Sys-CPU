@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.61
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Getting CPU information
 
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -9,7 +9,11 @@ Summary:        Getting CPU information
 License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
 URL:            http://search.cpan.org/~mzsanford/Sys-CPU/
 Source0:        http://search.cpan.org/CPAN/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{version}.tar.gz
-Patch0:		Sys-CPU-0.54-disable-cpu-type.patch
+# Support cpu_type on ARM and AArch64, bug #1093266, CPAN RT#95400
+Patch0:         Sys-CPU-0.61-Add-support-for-cpu_type-on-ARM-and-AArch64-Linux-pl.patch
+# Accept undefined cpu_clock on ARM and AArch64, bug #1093266, CPAN RT#95400
+Patch1:         Sys-CPU-0.61-cpu_clock-can-be-undefined-on-an-ARM.patch
+BuildRequires:  perl(Config)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(DynaLoader)
@@ -25,6 +29,7 @@ Currently only number of CPU's supported.
 %prep
 %setup -q -n Sys-CPU-%{version}
 %patch0 -p1
+%patch1 -p1
 sed -i 's/\r//' Changes README
 
 %build
@@ -48,6 +53,10 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Thu Jul 17 2014 Petr Pisar <ppisar@redhat.com> - 0.61-3
+- Support cpu_type on ARM and AArch64 (bug #1093266)
+- Accept undefined cpu_clock on ARM and AArch64 (bug #1093266)
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.61-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
