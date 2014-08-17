@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.61
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Getting CPU information
 
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -53,6 +53,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Sun Aug 17 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.61-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Thu Jul 17 2014 Petr Pisar <ppisar@redhat.com> - 0.61-3
 - Support cpu_type on ARM and AArch64 (bug #1093266)
 - Accept undefined cpu_clock on ARM and AArch64 (bug #1093266)
