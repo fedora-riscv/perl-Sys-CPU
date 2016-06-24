@@ -13,6 +13,8 @@ Source0:        http://search.cpan.org/CPAN/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{
 Patch0:         Sys-CPU-0.61-Add-support-for-cpu_type-on-ARM-and-AArch64-Linux-pl.patch
 # Accept undefined cpu_clock on ARM and AArch64, bug #1093266, CPAN RT#95400
 Patch1:         Sys-CPU-0.61-cpu_clock-can-be-undefined-on-an-ARM.patch
+BuildRequires:  perl-devel
+BuildRequires:  perl-generators
 BuildRequires:  perl(Config)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
