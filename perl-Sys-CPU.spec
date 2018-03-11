@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.61
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Getting CPU information
 
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -13,6 +13,10 @@ Source0:        http://search.cpan.org/CPAN/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{
 Patch0:         Sys-CPU-0.61-Add-support-for-cpu_type-on-ARM-and-AArch64-Linux-pl.patch
 # Accept undefined cpu_clock on ARM and AArch64, bug #1093266, CPAN RT#95400
 Patch1:         Sys-CPU-0.61-cpu_clock-can-be-undefined-on-an-ARM.patch
+BuildRequires:  findutils
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  sed
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl(Config)
@@ -55,6 +59,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Sun Mar 11 2018 Emmanuel Seyman <emmanuel@seyman.fr> - 0.61-15
+- Add missing build-requirements
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
