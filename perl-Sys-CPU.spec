@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.61
-Release:        15%{?dist}
+Release:        16%{?dist}
 Summary:        Getting CPU information
 
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -59,6 +59,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Wed Jun 27 2018 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-16
+- Perl 5.28 rebuild
+
 * Sun Mar 11 2018 Emmanuel Seyman <emmanuel@seyman.fr> - 0.61-15
 - Add missing build-requirements
 
