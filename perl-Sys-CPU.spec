@@ -1,6 +1,6 @@
 Name:           perl-Sys-CPU
 Version:        0.61
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        Getting CPU information
 
 # Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
@@ -59,6 +59,9 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Wed Jun 27 2018 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-16
 - Perl 5.28 rebuild
 
